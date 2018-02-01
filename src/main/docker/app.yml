@@ -1,0 +1,14 @@
+version: '2'
+services:
+    esportsaplication-app:
+        image: esportsaplication
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://esportsaplication-mysql:3306/esportsaplication?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    esportsaplication-mysql:
+        extends:
+            file: mysql.yml
+            service: esportsaplication-mysql
